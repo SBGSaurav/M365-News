@@ -4,10 +4,10 @@
     "version": "1.0.1",
     "id": "${{TEAMS_APP_ID}}",
     "developer": {
-        "name": "My App, Inc.",
-        "websiteUrl": "https://www.example.com",
-        "privacyUrl": "https://www.example.com/privacy",
-        "termsOfUseUrl": "https://www.example.com/termofuse"
+        "name": "SBG PTY LTD",
+        "websiteUrl": "https://www.sbgptyltd.com.au",
+        "privacyUrl": "https://www.sbgptyltd.com.au/privacy",
+        "termsOfUseUrl": "https://www.sbgptyltd.com.au/terms"
     },
     "icons": {
         "color": "color.png",
