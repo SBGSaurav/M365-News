@@ -14,7 +14,7 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "M365 Daily News${{APP_NAME_SUFFIX}}",
+        "short": "M365 Daily News",
         "full": "M365 Daily News - Microsoft AI Updates & Insights"
     },
     "description": {
