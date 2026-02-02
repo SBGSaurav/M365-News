@@ -31,28 +31,32 @@ The M365 Daily News agent is a **declarative agent** built with the Microsoft 36
 
 ## Data Sources
 
-### Current Sources
+### Current Design: Public Information Only
 
-Your agent currently uses:
+This agent is **intentionally designed to use only public sources**. It is a news and information agent, not an internal knowledge base tool.
 
-1. **Bing Web Search** (Automatic)
-   - Searches public web for latest Microsoft AI news
-   - Triggered automatically by Copilot
+### Single Data Source
 
-2. **System Instructions** (`instruction.txt`)
-   - Guides agent behavior and responses
-   - Defines personality and boundaries
+**Bing Web Search** (Automatic)
+- Searches public web for latest Microsoft AI news and announcements
+- Automatically triggered by Copilot
+- Real-time, up-to-date information
+- No dependency on internal systems
 
-3. **No internal knowledge base** (Default)
-   - Can be added if needed
+**Why Public Only?**
+- ✅ Reliable and verifiable information
+- ✅ No internal data exposure risk
+- ✅ Works for all users (no access restrictions)
+- ✅ Scalable across organization
+- ✅ Clear scope: News, not internal resources
 
 ---
 
 ## How to Customize
 
-### Option 1: Web Search Only (Current)
+### Current: Web Search Only (Recommended)
 
-Agent automatically searches Bing for information.
+Agent uses only public Bing web search for information.
 
 ```json
 {
@@ -62,54 +66,32 @@ Agent automatically searches Bing for information.
 }
 ```
 
-✅ **Pros:** Simple, real-time, no setup
-❌ **Cons:** Public info only, potential hallucinations
+✅ **Pros:** 
+- Simple & clean
+- Real-time public information
+- No internal dependencies
+- Works for all users
+- Clear scope
+
+❌ **Cons:** 
+- Public info only (by design)
+- Potential hallucinations (standard AI limitation)
 
 ---
 
-### Option 2: Add OneDrive/SharePoint Knowledge
+### NOT Recommended: Internal Knowledge Sources
 
-Connect internal company documents:
+⛔ **Do NOT add:**
+- OneDrive/SharePoint connections
+- Internal document links
+- Company-confidential resources
+- API plugins for internal data
 
-```json
-{
-  "instructions": "$[file('instruction.txt')]",
-  "knowledgeSources": [
-    {
-      "type": "sharepoint",
-      "connectorId": "sharepoint",
-      "displayName": "Company M365 Resources"
-    }
-  ]
-}
-```
+**Reason:** This agent is designed as a **public news source**, not an internal knowledge base.
 
-✅ **Pros:** Use internal docs, accurate company-specific info
-❌ **Cons:** Requires setup, access permissions needed
-
----
-
-### Option 3: Add API Plugins
-
-Connect to external APIs for real-time data:
-
-```json
-{
-  "instructions": "$[file('instruction.txt')]",
-  "actions": [
-    {
-      "id": "microsoftGraphApi",
-      "definition": {
-        "openapi": "3.0.0",
-        "info": {"title": "Microsoft Graph API", "version": "1.0"}
-      }
-    }
-  ]
-}
-```
-
-✅ **Pros:** Real-time data, custom integrations
-❌ **Cons:** Complex setup, requires API keys
+**If you need internal knowledge:**
+- Create a separate agent for that purpose
+- Keep this one focused on public Microsoft news
 
 ---
 
@@ -225,7 +207,7 @@ in Microsoft's AI world.
 Your role is to keep users informed EXCLUSIVELY about Copilot Pro 
 updates, features, pricing, and capabilities. Do not discuss other 
 Microsoft AI products.
-```
+```NOT ADDING (public only) | Intentionally kept simple
 
 **Then:**
 ```bash
